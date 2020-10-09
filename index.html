@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"/>
+    <link rel<="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/shop-homepage.css" rel="stylesheet">
+    <title><%= title %></title>
+    <style> /*Añadiendo el estilo de nuestro mapa*/ #map {width: 100%; height: 300px;} 
+    body{ background-color: rgb(243, 241, 241);}
+    </style> 
+</head>
+<body>
+ 
+
+  
+  
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">GasolineraWeb Los DosBros</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Inicio
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Mi ubicacion</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Acerca de nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      
+   <center><div class="container">
+        <div class="row">
+            <div class="col">
+                <div id = 'map'>
+                    <script type="text/javascript">	
+                        //Cargando nuestro mapa
+                        var mapsipe = L.map('map').
+                        setView([21.166873, -100.932769],     
+                        15); //[38.6202, -0.5731] es la latitud y longitud de la zona que queremos mostrar, en nuestro caso Ibi 
+                        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+                            maxZoom: 14
+                        }).addTo(mapsipe);
+                        //MARCADOR1
+                        var marker = L.marker([21.156580, -100.921919]).addTo(mapsipe);
+                        marker.bindPopup("<b>Hola!</b><br>Como estas guapo").openPopup();
+
+                        var marker2 = L.marker([21.162555, -100.905242]).addTo(mapsipe);
+                        marker2.bindPopup("<b>Hola!</b><br>Como estas guapo").openPopup();
+
+
+                        var popup = L.popup();
+                        function onMapClick(e) {
+                         popup
+                            .setLatLng(e.latlng)
+                            .setContent("Has pulsado en el mapa en la coordenada " + e.latlng.toString())
+                            .openOn(mapsipe);
+                            }           
+                            mapsipe.on('click', onMapClick);
+                  </script>
+                </div>
+            </div>
+        </div>
+    </div></center>
+
+  
+ <div class="form-row">
+              <div class="col-12 col-md-9 mb-2 mb-md-0">
+                <input type="email" class="form-control form-control-lg" placeholder="Encuentra tu gasolinera preferida...">
+              </div>
+              <div class="col-12 col-md-3">
+                <button type="submit" class="btn btn-block btn-lg btn-primary">BUSCAR!</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/index.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+   <div class="row">
+
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="https://media.metrolatam.com/2019/08/10/gasolinera-84e3ba791f910146f07c288d486bc740-1200x800.jpg" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#">Pemex</a>
+          </h4>
+          <h5>$24.99</h5>
+          <p class="card-text">Exelente calidad, ademas de muy buen servicio. Abierto las 24 horas. ESTA CERCA DE TI.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+        </div>
+      </div>
+    </div>
+    
+   <div class="col-lg-4 col-md-6 mb-4">
+    <div class="card h-100">
+      <a href="#"><img class="card-img-top" src="https://globalenergy.mx/wp-content/uploads/2020/06/gasolinera_.jpg" alt=""></a>
+      <div class="card-body">
+        <h4 class="card-title">
+          <a href="#">Gas Especial Dolores</a>
+        </h4>
+        <h5>$24.99</h5>
+        <p class="card-text">Buen precio. Exelente calidad. Abierto las 24 horas. ESTA CERCA DE TI.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+      </div>
+    </div>
+  </div>
+
+  
+    <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRlReml6-1rCbeQdj4GOjvFviboLcqqH6iyjA&usqp=CAU" alt=""></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">TOTAL La Estación</a>
+                </h4>
+                <h5>$24.99</h5>
+                <p class="card-text">Exelente atencion. Buen precio. Buena calidad. Abierto las 24 horas. ESTA CERCA DE TI.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">GasolineraWeb Los DosBros</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+    
+</body>
+</html>
